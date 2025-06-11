@@ -25,4 +25,6 @@ def multiplicar():
     return jsonify({"resultado": resultado})
 
 if __name__ == '__main__':
+    print("🚀 API de operaciones matemáticas iniciada en http://localhost:5000")
+    print("👉 Endpoints disponibles: /sumar, /restar, /multiplicar")
     app.run(host='0.0.0.0', port=5000)
