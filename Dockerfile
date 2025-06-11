@@ -6,6 +6,8 @@ COPY . .
 
 RUN pip install -r requirements.txt
 
+ENV PYTHONPATH=/CI_CD_Docker
+
 EXPOSE 5000
 
 CMD ["python", "main.py"]
