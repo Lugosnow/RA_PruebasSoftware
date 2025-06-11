@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Calculadora API</title>
+</head>
+<body>
+  <h1>Calculadora API</h1>
+  <input id="a" type="number" placeholder="a">
+  <input id="b" type="number" placeholder="b">
+  <button onclick="operar('sumar')">Sumar</button>
+  <button onclick="operar('restar')">Restar</button>
+  <button onclick="operar('multiplicar')">Multiplicar</button>
+  <p id="resultado"></p>
+  <script>
+    function operar(op) {
+      const a = document.getElementById('a').value;
+      const b = document.getElementById('b').value;
+      fetch(`/${op}?a=${a}&b=${b}`)
+        .then(r => r.json())
+        .then(data => {
+          document.getElementById('resultado').innerText = "Resultado: " + data.resultado;
+        });
+    }
+  </script>
+</body>
+</html>

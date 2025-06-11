@@ -1,7 +1,12 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_from_directory
 import operaciones
+import os
 
 app = Flask(__name__)
+
+@app.route('/')
+def index():
+    return send_from_directory('static', 'index.html')
 
 @app.route('/sumar', methods=['GET'])
 def sumar():
@@ -25,6 +30,6 @@ def multiplicar():
     return jsonify({"resultado": resultado})
 
 if __name__ == '__main__':
-    print("🚀 API de operaciones matemáticas iniciada en http://localhost:5000")
-    print("👉 Endpoints disponibles: /sumar, /restar, /multiplicar")
+    print("API de operaciones matemáticas iniciada en http://localhost:5000")
+    print("Endpoints disponibles: /sumar, /restar, /multiplicar")
     app.run(host='0.0.0.0', port=5000)
